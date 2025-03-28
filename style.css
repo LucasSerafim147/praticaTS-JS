@@ -1,0 +1,187 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.sidebar {
+    background-color: #322C3A;
+}
+
+.logo-img {
+    max-width: 60px;
+}
+
+.guide {
+    color: #47E1B6;
+}
+
+
+.statement-section {
+    background-color: #1a1a1a;
+}
+
+.saldo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.saldo-label {
+    font-size: 0.8rem;
+    color: #adb5bd;
+}
+
+.saldo-valor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #20c997;
+}
+
+
+.list-group-custom {
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.list-group-item-custom {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-item {
+    background-color: #3a3a3a;
+    border-radius: 10px 10px 0 0;
+}
+
+.total-item {
+    font-weight: bold;
+    background-color: #3a3a3a;
+    border-radius: 0 0 10px 10px;
+}
+
+.list-group-item-custom .col-sign,
+.total-item .col-sign {
+    flex: 0 0 10%;
+    padding: 5px;
+}
+
+.list-group-item-custom .col-mercadoria,
+.total-item .col-mercadoria {
+    flex: 1;
+    padding: 5px;
+}
+
+.list-group-item-custom .col-qtd,
+.total-item .col-qtd {
+    flex: 0 0 15%;
+    padding: 5px;
+}
+
+.list-group-item-custom .col-valor,
+.total-item .col-valor {
+    flex: 0 0 25%;
+    padding: 5px;
+    text-align: right;
+}
+
+.total-item .col-mercadoria {
+    flex: 1;
+    color: #a970ff;
+}
+
+.total-item .col-qtd {
+    display: none;
+}
+
+
+.btn-super-large {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+}
+
+.btn-purple {
+    background-color: #6f42c1;
+}
+
+
+.modal-content {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+
+@media (min-width: 992px) {
+    .list-group-custom {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    
+    .list-group-item-custom {
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+    
+    .list-group-item-custom .col-sign,
+    .total-item .col-sign {
+        flex: 0 0 10%;
+        padding: 5px 10px;
+    }
+    
+    .list-group-item-custom .col-mercadoria,
+    .total-item .col-mercadoria {
+        flex: 0 0 50%;
+        padding: 5px 10px;
+    }
+    
+    .list-group-item-custom .col-qtd,
+    .total-item .col-qtd {
+        flex: 0 0 20%;
+        padding: 5px 10px;
+    }
+    
+    .list-group-item-custom .col-valor,
+    .total-item .col-valor {
+        flex: 0 0 20%;
+        padding: 5px 10px;
+    }
+    
+    .total-item .col-mercadoria {
+        flex: 0 0 80%;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    body {
+        overflow-y: hidden;
+    }
+    
+    .sidebar {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .statement-section {
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .view-statement-btn,
+    .new-transaction-btn {
+        display: none !important;
+    }
+}
