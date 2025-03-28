@@ -3,7 +3,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .sidebar {
     background-color: #322C3A;
 }
@@ -16,9 +15,10 @@ body {
     color: #47E1B6;
 }
 
-
 .statement-section {
     background-color: #1a1a1a;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .saldo-container {
@@ -38,150 +38,123 @@ body {
     color: #20c997;
 }
 
-
-.list-group-custom {
-    background-color: #2a2a2a;
-    color: #fff;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    margin: 10px 0;
-}
-
-.list-group-item-custom {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    padding: 15px 20px;
-    margin-bottom: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.header-item {
-    background-color: #3a3a3a;
-    border-radius: 10px 10px 0 0;
-}
-
-.total-item {
-    font-weight: bold;
-    background-color: #3a3a3a;
-    border-radius: 0 0 10px 10px;
-}
-
-.list-group-item-custom .col-sign,
-.total-item .col-sign {
-    flex: 0 0 10%;
-    padding: 5px;
-}
-
-.list-group-item-custom .col-mercadoria,
-.total-item .col-mercadoria {
-    flex: 1;
-    padding: 5px;
-}
-
-.list-group-item-custom .col-qtd,
-.total-item .col-qtd {
-    flex: 0 0 15%;
-    padding: 5px;
-}
-
-.list-group-item-custom .col-valor,
-.total-item .col-valor {
-    flex: 0 0 25%;
-    padding: 5px;
-    text-align: right;
-}
-
-.total-item .col-mercadoria {
-    flex: 1;
-    color: #a970ff;
-}
-
-.total-item .col-qtd {
-    display: none;
-}
-
-
 .btn-super-large {
     padding: 1rem 3rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border-radius: 12px;
 }
 
-.btn-purple {
-    background-color: #6f42c1;
+
+.table-extrato {
+    width: 100%;
+    background-color: #2a2a2a;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.table-extrato th,
+.table-extrato td {
+    padding: 12px 15px;
+    border: none;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.table-header {
+    background-color: #3a3a3a;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.table-header th {
+    font-weight: normal;
+    text-align: left;
+}
+
+.table-row {
+    background-color: #2a2a2a;
+    transition: background-color 0.2s;
+}
+
+.table-row:hover {
+    background-color: #333333;
+}
+
+.table-total {
+    background-color: #3a3a3a;
+    font-weight: bold;
+    border-top: 2px solid #444;
 }
 
 
-.modal-content {
-    background-color: #1a1a1a;
+.col-sign {
+    width: 5%;
+    text-align: center;
+}
+
+.col-mercadoria {
+    width: 40%;
+}
+
+.col-qtd {
+    width: 15%;
+    text-align: center;
+}
+
+.col-valor {
+    width: 25%;
+    text-align: right;
+}
+
+.col-action {
+    width: 15%;
+    text-align: right;
+}
+
+
+.text-success {
+    color: #47E1B6 !important;
+}
+
+.text-danger {
+    color: #ff6b6b !important;
+}
+
+
+.btn-outline-danger {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+.btn-outline-danger:hover {
+    background-color: #ff6b6b;
     color: white;
 }
 
 
-@media (min-width: 992px) {
-    .list-group-custom {
-        font-size: 1.2rem;
-        margin: 0;
+@media (max-width: 768px) {
+    .table-extrato th,
+    .table-extrato td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
     }
-    
-    .list-group-item-custom {
-        padding: 15px 20px;
-        margin-bottom: 10px;
-        flex-wrap: nowrap;
-        gap: 0;
-    }
-    
-    .list-group-item-custom .col-sign,
-    .total-item .col-sign {
-        flex: 0 0 10%;
-        padding: 5px 10px;
-    }
-    
-    .list-group-item-custom .col-mercadoria,
-    .total-item .col-mercadoria {
-        flex: 0 0 50%;
-        padding: 5px 10px;
-    }
-    
-    .list-group-item-custom .col-qtd,
-    .total-item .col-qtd {
-        flex: 0 0 20%;
-        padding: 5px 10px;
-    }
-    
-    .list-group-item-custom .col-valor,
-    .total-item .col-valor {
-        flex: 0 0 20%;
-        padding: 5px 10px;
-    }
-    
-    .total-item .col-mercadoria {
-        flex: 0 0 80%;
-    }
-}
 
+    .col-mercadoria {
+        width: 35%;
+    }
 
-@media (min-width: 1200px) {
-    body {
-        overflow-y: hidden;
+    .col-qtd {
+        width: 15%;
     }
-    
-    .sidebar {
-        height: 100vh;
-        overflow-y: auto;
+
+    .col-valor {
+        width: 25%;
     }
-    
-    .statement-section {
-        height: 100vh;
-        overflow-y: auto;
-    }
-    
-    .view-statement-btn,
-    .new-transaction-btn {
-        display: none !important;
+
+    .col-action {
+        width: 20%;
     }
 }
