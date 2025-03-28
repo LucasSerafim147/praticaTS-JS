@@ -44,105 +44,7 @@ body {
     border-radius: 12px;
 }
 
-
-.table-extrato {
-    width: 100%;
-    background-color: #2a2a2a;
-    color: white;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.table-extrato th,
-.table-extrato td {
-    padding: 12px 15px;
-    border: none;
-    border-bottom: 1px solid #3a3a3a;
-}
-
-.table-header {
-    background-color: #3a3a3a;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.table-header th {
-    font-weight: normal;
-    text-align: left;
-}
-
-.table-row {
-    background-color: #2a2a2a;
-    transition: background-color 0.2s;
-}
-
-.table-row:hover {
-    background-color: #333333;
-}
-
-.table-total {
-    background-color: #3a3a3a;
-    font-weight: bold;
-    border-top: 2px solid #444;
-}
-
-
-.col-sign {
-    width: 5%;
-    text-align: center;
-}
-
-.col-mercadoria {
-    width: 40%;
-}
-
-.col-qtd {
-    width: 15%;
-    text-align: center;
-}
-
-.col-valor {
-    width: 25%;
-    text-align: right;
-}
-
-.col-action {
-    width: 15%;
-    text-align: right;
-}
-
-
-.text-success {
-    color: #47E1B6 !important;
-}
-
-.text-danger {
-    color: #ff6b6b !important;
-}
-
-
-.btn-outline-danger {
-    border-color: #ff6b6b;
-    color: #ff6b6b;
-}
-
-.btn-outline-danger:hover {
-    background-color: #ff6b6b;
-    color: white;
-}
-
-
-@media (max-width: 768px) {
-    .table-extrato th,
-    .table-extrato td {
-        padding: 10px 8px;
-        font-size: 0.85rem;
-    }
-
-    .col-mercadoria {
+ia {
         width: 35%;
     }
 
@@ -154,7 +56,4 @@ body {
         width: 25%;
     }
 
-    .col-action {
-        width: 20%;
-    }
-}
+    
