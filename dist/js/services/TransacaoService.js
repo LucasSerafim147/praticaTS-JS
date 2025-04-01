@@ -12,10 +12,10 @@ export class TransacaoService {
     }
     static adicionar(transacao) {
         const transacoes = this.carregarTransacoes();
-        // Calcula e armazena apenas o valor total
+        // Calcula o valor total (valor unitário * quantidade)
         const transacaoComTotal = {
             ...transacao,
-            valor: transacao.quantidade * transacao.valor // Valor total
+            valor: transacao.valor * transacao.quantidade // Substitui o valor unitário pelo total
         };
         transacoes.push(transacaoComTotal);
         this.salvarTransacoes(transacoes);
@@ -31,7 +31,7 @@ export class TransacaoService {
         const transacoes = this.carregarTransacoes();
         return transacoes.reduce((total, transacao) => {
             return transacao.transacao === TipoTransacao.VENDA
-                ? total + transacao.valor // Valor total
+                ? total + transacao.valor // Usa o valor total já calculado
                 : total - transacao.valor;
         }, 0);
     }
