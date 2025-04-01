@@ -1,37 +1,53 @@
 import bootstrap from "bootstrap";
-const purchaseForm = document.getElementById('transactionType');
-const confirmationModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-const modalProductName = document.getElementById('ModalMercadoria');
-const modalQuantity = document.getElementById('ModalQuantidade');
-const modalTotalPrice = document.getElementById('ModalValor');
-const confirmPurchaseBtn = document.getElementById('confirmarCompra');
-function fillModal(data) {
-    modalProductName.textContent = data.nome;
-    modalQuantity.textContent = data.quantidade.toString();
-    const totalPrice = (data.quantidade * data.valor).toFixed(2);
-    modalTotalPrice.textContent = `R$ ${totalPrice}`;
-    confirmationModal.show(); // Abre o modal
-}
-// Evento de submissão do formulário
-purchaseForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    // Captura os valores do formulário
-    const productName = document.getElementById('productName').value;
-    const quantity = parseInt(document.getElementById('quantity').value);
-    const price = parseFloat(document.getElementById('price').value);
-    // Validação básica
-    if (!productName || isNaN(quantity) || isNaN(price)) {
-        alert('Por favor, preencha todos os campos corretamente.');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM carregado, iniciando script...');
+    // Elementos do formulário
+    const form = document.querySelector('form');
+    const addButton = form.querySelector('button[type="button"]');
+    // Elementos do modal
+    const modalElement = document.getElementById('staticBackdrop');
+    if (!modalElement) {
+        console.error('Modal não encontrado');
         return;
     }
-    // Cria objeto com os dados
-    const purchaseData = { productName, quantity, price };
-    // Preenche e exibe o modal
-    fillModal(purchaseData);
-});
-// Evento de confirmação final no modal
-confirmPurchaseBtn.addEventListener('click', () => {
-    alert('Compra confirmada com sucesso!');
-    confirmationModal.hide(); // Fecha o modal
-    purchaseForm.reset(); // Reseta o formulário
+    const modal = new bootstrap.Modal(modalElement);
+    const modalTransacao = document.getElementById('ModalTransacao');
+    const modalMercadoria = document.getElementById('ModalMercadoria');
+    const modalQuantidade = document.getElementById('ModalQuantidade');
+    const modalValor = document.getElementById('ModalValor');
+    const confirmPurchaseBtn = document.getElementById('confirmarCompra');
+    // Função para preencher o modal
+    function fillModal(data) {
+        console.log('Preenchendo modal com dados:', data);
+        modalTransacao.textContent = data.transacao === 'compra' ? 'Compra' : 'Venda';
+        modalMercadoria.textContent = data.nome;
+        modalQuantidade.textContent = data.quantidade.toString();
+        modalValor.textContent = `R$ ${(data.quantidade * data.valor).toFixed(2)}`;
+    }
+    // Evento do botão "Adicionar"
+    addButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log('Botão "Adicionar" clicado');
+        // Obter valores do formulário
+        const formData = new FormData(form);
+        const transacao = formData.get('transactionType');
+        const nome = formData.get('mercadoria');
+        const quantidade = parseInt(formData.get('quantidade'));
+        const valor = parseFloat(formData.get('valor'));
+        console.log('Valores capturados:', { transacao, nome, quantidade, valor });
+        // Validação
+        if (!transacao || !nome || isNaN(quantidade) || isNaN(valor) || quantidade <= 0 || valor <= 0) {
+            alert('Por favor, preencha todos os campos corretamente.');
+            return;
+        }
+        // Preencher e mostrar o modal
+        fillModal({ transacao, nome, quantidade, valor });
+        modal.show();
+    });
+    // Evento de confirmação
+    confirmPurchaseBtn.addEventListener('click', () => {
+        alert('Transação confirmada com sucesso!');
+        modal.hide();
+        form.reset();
+    });
 });

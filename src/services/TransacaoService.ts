@@ -17,7 +17,14 @@ export class TransacaoService {
 
     static adicionar(transacao: Transacao): void {
         const transacoes = this.carregarTransacoes();
-        transacoes.push(transacao);
+        
+        // Calcula e armazena apenas o valor total
+        const transacaoComTotal = {
+            ...transacao,
+            valor: transacao.quantidade * transacao.valor // Valor total
+        };
+        
+        transacoes.push(transacaoComTotal);
         this.salvarTransacoes(transacoes);
         this.atualizarExtrato();
     }
@@ -33,7 +40,7 @@ export class TransacaoService {
         const transacoes = this.carregarTransacoes();
         return transacoes.reduce((total, transacao) => {
             return transacao.transacao === TipoTransacao.VENDA 
-                ? total + transacao.valor 
+                ? total + transacao.valor // Valor total
                 : total - transacao.valor;
         }, 0);
     }
@@ -69,7 +76,7 @@ export class TransacaoService {
             corpoTabela.appendChild(linha);
         });
 
-        // Adiciona linha de total
+        // Linha de total
         const totalRow = document.createElement("tr");
         totalRow.className = "table-total";
         totalRow.innerHTML = `
@@ -84,7 +91,7 @@ export class TransacaoService {
         // Atualiza o saldo
         saldoElement.textContent = formatarMoeda(this.calcularSaldo());
 
-        // Adiciona eventos aos botões de remover
+        // Eventos dos botões de remover
         document.querySelectorAll(".btn-outline-danger").forEach(button => {
             button.addEventListener("click", (event) => {
                 const target = event.currentTarget as HTMLElement;

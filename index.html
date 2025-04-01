@@ -35,7 +35,7 @@
                                         <label for="transactionType" class="form-label">Tipo de transação</label>
                                         <select class="form-select bg-secondary text-white border-secondary"
                                             id="transactionType" name="transactionType">
-                                            <option value="" selected>Compra</option>
+                                            
                                             <option value="compra">Compra</option>
                                             <option value="venda">Venda</option>
                                         </select>
@@ -81,6 +81,8 @@
                                                     </div>
                                                     <h3 class="fw-bold mb-4">Confirma a adição do produto?</h3>
                                                     <div class="mb-4">
+                                                        <p class="mb-2 fs-5">Transacao: <span class="fw-bold" id="ModalTransacao"></span>
+                                                        </p>
                                                         <p class="mb-2 fs-5">Item: <span class="fw-bold" id="ModalMercadoria"></span>
                                                         </p>
                                                         <p class="mb-2 fs-5">Quantidade: <span class="fw-bold" id="ModalQuantidade"></span></p>
@@ -90,7 +92,7 @@
                                                 <div class="modal-footer justify-content-center border-0 bg-dark">
                                                     <button type="button" class="btn btn-outline-light me-3"
                                                         data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button"
+                                                    <button type="submit"
                                                         class="btn btn-success px-4" id="confirmarCompra">Adicionar</button>
                                                 </div>
                                             </div>
@@ -116,6 +118,8 @@
                                                     </div>
                                                     <h3 class="fw-bold mb-4">Confirma a exclusão do produto?</h3>
                                                     <div class="mb-4">
+                                                        <p class="mb-2 fs-5">Transação: <span class="fw-bold">Nome do Produto</span>
+                                                        </p>
                                                         <p class="mb-2 fs-5">Item: <span class="fw-bold">Nome do Produto</span>
                                                         </p>
                                                         <p class="mb-2 fs-5">Quantidade: <span class="fw-bold">10</span></p>
