@@ -12,9 +12,12 @@ export class TransacaoService {
     }
     static adicionar(transacao) {
         const transacoes = this.carregarTransacoes();
+        const valorUnitario = Number(transacao.valor) || 0;
+        const quantidade = Number(transacao.quantidade) || 0;
+        const valorTotal = valorUnitario * quantidade;
         const transacaoComTotal = {
             ...transacao,
-            valor: transacao.valor * transacao.quantidade
+            valor: valorTotal
         };
         transacoes.push(transacaoComTotal);
         this.salvarTransacoes(transacoes);
@@ -29,6 +32,7 @@ export class TransacaoService {
     static calcularSaldo() {
         const transacoes = this.carregarTransacoes();
         return transacoes.reduce((total, transacao) => {
+            const valor = Number(transacao.valor) || 0;
             return transacao.transacao === TipoTransacao.VENDA
                 ? total + transacao.valor
                 : total - transacao.valor;
@@ -46,11 +50,16 @@ export class TransacaoService {
             linha.className = "table-row";
             const sinal = transacao.transacao === TipoTransacao.VENDA ? "text-success" : "text-danger";
             const simbolo = transacao.transacao === TipoTransacao.VENDA ? "+" : "-";
+            // Formata o valor diretamente aqui
+            const valorFormatado = transacao.valor.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
             linha.innerHTML = `
                 <td class="col-sign ${sinal}">${simbolo}</td>
                 <td class="col-mercadoria">${transacao.nome}</td>
                 <td class="col-qtd">${transacao.quantidade}</td>
-                <td class="col-valor text-end">${formatarMoeda(transacao.valor)}</td>
+                <td class="col-valor text-end">${valorFormatado}</td>
                 <td class="col-action text-end">
                     <button class="btn btn-sm btn-outline-danger" data-index="${index}">
                         <i class="bi bi-trash"></i>

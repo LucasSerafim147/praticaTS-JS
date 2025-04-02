@@ -1,4 +1,5 @@
 import { TransacaoService } from "../services/TransacaoService.js";
+import { parseValorMonetario } from '../utils/formatters.js';
 export function configurarFormulario() {
     const formulario = document.querySelector("form");
     if (!formulario)
@@ -14,7 +15,7 @@ export function configurarFormulario() {
             const tipo = tipoSelect.value;
             const nome = nomeInput.value;
             const quantidade = parseFloat(quantidadeInput.value);
-            const valor = parseFloat(valorInput.value);
+            const valor = parseValorMonetario(valorInput.value);
             if (!nome || isNaN(quantidade)) {
                 alert("Por favor, preencha todos os campos corretamente!");
                 return;

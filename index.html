@@ -264,7 +264,7 @@
                     const transactionType = document.getElementById('transactionType').value;
                     const mercadoria = document.getElementById('mercadoria').value;
                     const quantidade = document.getElementById('quantidade').value || 0; 
-                    const valor = document.getElementById('valor').value || 0; 
+                    const valor = document.getElementById('valor').value.replace(/[^\d]/g, '') / 100 || 0; // Remove máscara e converte
             
                 
                     const valorTotal = parseFloat(valor) * parseInt(quantidade);
@@ -279,7 +279,12 @@
                     document.getElementById('ModalTransacao').textContent = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
                     document.getElementById('ModalMercadoria').textContent = mercadoria || "Não informado";
                     document.getElementById('ModalQuantidade').textContent = quantidade || "0";
-                    document.getElementById('ModalValor').textContent = valorTotal ? valorFormatado : "R$ 0,00";
+                    document.getElementById('ModalValor').textContent = valorTotal ? valorFormatado : "R$ 9,00";
+
+
+
+
+                    
                 });
             });
             </script>
