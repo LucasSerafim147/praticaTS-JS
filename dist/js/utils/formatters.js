@@ -1,30 +1,40 @@
+// src/utils/formatters.ts
 export function formatarMoeda(valor) {
-    return valor.toLocaleString("pt-br", { style: "currency", currency: "BRL" });
-}
-export function aplicarMascaraMaximo(input, max) {
-    input.addEventListener('input', () => {
-        let value = input.value.replace(/\D/g, ''); // Remove não dígitos
-        value = value.slice(0, 3); // Limita a 3 dígitos
-        if (Number(value) > max) {
-            value = max.toString();
-        }
-        input.value = value;
+    return valor.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
     });
 }
-export function aplicarMascaraNumero(valor, maxLength) {
-    // Remove tudo que não é dígito e limita ao tamanho máximo
-    return valor.replace(/\D/g, '').slice(0, maxLength);
-}
-export function aplicarMascaraDecimal(valor) {
-    // Remove caracteres não numéricos exceto ponto decimal
-    let cleaned = valor.replace(/[^\d,]/g, '');
-    // Substitui vírgula por ponto para cálculo
-    const decimalSeparator = ',';
-    cleaned = cleaned.replace('.', decimalSeparator);
-    // Garante apenas um separador decimal
-    const parts = cleaned.split(decimalSeparator);
-    if (parts.length > 1) {
-        cleaned = parts[0] + decimalSeparator + parts.slice(1).join('').slice(0, 2);
+export function aplicarMascaraMoeda(input) {
+    // Guarda a posição original do cursor
+    const posicaoOriginal = input.selectionStart || 0;
+    const valorOriginal = input.value;
+    // Remove todos os caracteres não numéricos
+    let valor = input.value.replace(/\D/g, '');
+    // Se estiver vazio, limpe o campo
+    if (valor === '') {
+        input.value = '';
+        return;
     }
-    return cleaned;
+    // Adiciona os centavos (últimos dois dígitos)
+    valor = valor.replace(/(\d)(\d{2})$/, '$1,$2');
+    // Adiciona separadores de milhar
+    valor = valor.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    // Formata como moeda
+    input.value = `R$ ${valor}`;
+    // Ajusta a posição do cursor
+    let novaPosicao = posicaoOriginal;
+    const diferenca = input.value.length - valorOriginal.length;
+    if (diferenca > 0) {
+        novaPosicao += diferenca;
+    }
+    // Mantém o cursor em posição válida
+    novaPosicao = Math.max(3, Math.min(novaPosicao, input.value.length));
+    input.setSelectionRange(novaPosicao, novaPosicao);
+}
+export function removerMascaraMoeda(valorFormatado) {
+    const valorNumerico = parseFloat(valorFormatado.replace('R$', '')
+        .replace(/\./g, '')
+        .replace(',', '.'));
+    return isNaN(valorNumerico) ? 0 : valorNumerico;
 }

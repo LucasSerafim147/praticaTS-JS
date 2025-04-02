@@ -18,10 +18,9 @@ export class TransacaoService {
     static adicionar(transacao: Transacao): void {
         const transacoes = this.carregarTransacoes();
         
-        // Calcula o valor total (valor unitário * quantidade)
         const transacaoComTotal = {
             ...transacao,
-            valor: transacao.valor * transacao.quantidade // Substitui o valor unitário pelo total
+            valor: transacao.valor * transacao.quantidade 
         };
         
         transacoes.push(transacaoComTotal);
@@ -40,7 +39,7 @@ export class TransacaoService {
         const transacoes = this.carregarTransacoes();
         return transacoes.reduce((total, transacao) => {
             return transacao.transacao === TipoTransacao.VENDA 
-                ? total + transacao.valor // Usa o valor total já calculado
+                ? total + transacao.valor 
                 : total - transacao.valor;
         }, 0);
     }
@@ -88,10 +87,10 @@ export class TransacaoService {
         `;
         corpoTabela.appendChild(totalRow);
         
-        // Atualiza o saldo
+        
         saldoElement.textContent = formatarMoeda(this.calcularSaldo());
 
-        // Eventos dos botões de remover
+       
         document.querySelectorAll(".btn-outline-danger").forEach(button => {
             button.addEventListener("click", (event) => {
                 const target = event.currentTarget as HTMLElement;
