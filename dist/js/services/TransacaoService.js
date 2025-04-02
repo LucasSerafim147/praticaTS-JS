@@ -50,7 +50,6 @@ export class TransacaoService {
             linha.className = "table-row";
             const sinal = transacao.transacao === TipoTransacao.VENDA ? "text-success" : "text-danger";
             const simbolo = transacao.transacao === TipoTransacao.VENDA ? "+" : "-";
-            // Formata o valor diretamente aqui
             const valorFormatado = transacao.valor.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'

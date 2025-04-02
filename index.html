@@ -14,8 +14,8 @@
 <body class="text-white bg-dark">
     <div class="container-fluid p-0">
         <div class="row g-0">
-            <!-- Formulário (visível por padrão em mobile) -->
             <section class="col-md-5 col-12 vh-100 sidebar collapse show multi-collapse" id="forms" style="background-color: #322C3A;">
+                
                 <div class="container-fluid p-3 d-flex justify-content-center align-items-center position-relative">
                     <div class="d-flex align-items-center">
                         <img src="dist/images/dollar-dollar-clay.png" alt="logo da fin guide" class="img-fluid logo-img">
@@ -143,6 +143,15 @@
             </section>
 
             <section class="col-md-7 col-12 statement-section vh-100 collapse multi-collapse d-md-block" id="extrato">
+                <div class="container-fluid p-3 d-flex justify-content-center align-items-center position-relative d-lg-none d-lg-top-0-start-0-mt-3-ms-3">
+                    <div class="d-flex align-items-center">
+                        <img src="dist/images/dollar-dollar-clay.png" alt="logo da fin guide" class="img-fluid logo-img">
+                        <div class="ms-3">
+                            <h1 class="m-0"><span class="fin fw-bold">FIN</span><span class="guide fw-bold" style="color: #47E1B6">GUIDE</span></h1>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="container py-5">
                     <div class="row">
                         <div class="col-12 mb-4">
@@ -193,7 +202,7 @@
     <script type="module" src="dist/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const addButton = document.querySelector('button[data-bs-target="#staticBackdrop"]','button[data-bs-target="#staticBackdrop2"]');
+            const addButton = document.querySelector('button[data-bs-target="#staticBackdrop"]');
             
             addButton.addEventListener('click', function () {
                 const transactionType = document.getElementById('transactionType').value;
