@@ -257,24 +257,30 @@
         <script type = "module" src="dist/js/main.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Captura o botão "Adicionar"
+               
                 const addButton = document.querySelector('button[data-bs-target="#staticBackdrop"]');
                 
                 addButton.addEventListener('click', function () {
-                    // Captura os valores do formulário
+                  
                     const transactionType = document.getElementById('transactionType').value;
                     const mercadoria = document.getElementById('mercadoria').value;
-                    const quantidade = document.getElementById('quantidade').value;
-                    const valor = document.getElementById('valor').value;
+                    const quantidade = document.getElementById('quantidade').value || 0; 
+                    const valor = document.getElementById('valor').value || 0; 
             
-                    // Formata o valor como moeda (opcional)
-                    const valorFormatado = `R$ ${parseFloat(valor).toFixed(2).replace('.', ',')}`;
+                
+                    const valorTotal = parseFloat(valor) * parseInt(quantidade);
             
-                    // Insere os valores no modal
+                    
+                    const valorFormatado = `R$ ${valorTotal.toLocaleString('pt-BR', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    })}`;
+            
+                    
                     document.getElementById('ModalTransacao').textContent = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
                     document.getElementById('ModalMercadoria').textContent = mercadoria || "Não informado";
                     document.getElementById('ModalQuantidade').textContent = quantidade || "0";
-                    document.getElementById('ModalValor').textContent = valor ? valorFormatado : "R$ 0,00";
+                    document.getElementById('ModalValor').textContent = valorTotal ? valorFormatado : "R$ 0,00";
                 });
             });
             </script>
