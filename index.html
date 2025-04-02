@@ -130,7 +130,7 @@
                                                 <div class="modal-footer justify-content-center border-0 bg-dark">
                                                     <button type="button" class="btn btn-outline-light me-3"
                                                         data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn btn-danger px-4">Excluir</button>
+                                                    <button type="button" id="modalExcluir" class="btn btn-danger px-4">Excluir</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -193,7 +193,7 @@
     <script type="module" src="dist/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const addButton = document.querySelector('button[data-bs-target="#staticBackdrop"]');
+            const addButton = document.querySelector('button[data-bs-target="#staticBackdrop"]','button[data-bs-target="#staticBackdrop2"]');
             
             addButton.addEventListener('click', function () {
                 const transactionType = document.getElementById('transactionType').value;
@@ -218,31 +218,6 @@
         
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const addButton = document.querySelector('button[data-bs-target="#staticBackdrop2"]');
-            
-            addButton.addEventListener('click', function () {
-                const transactionType = document.getElementById('transactionType').value;
-                const mercadoria = document.getElementById('mercadoria').value;
-                const quantidade = document.getElementById('quantidade').value || 0; 
-                const valor = document.getElementById('valor').value.replace(/[^\d]/g, '') / 100 || 0;
-            
-                const valorTotal = parseFloat(valor) * parseInt(quantidade);
-            
-                const valorFormatado = `R$ ${valorTotal.toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                })}`;
-            
-                document.getElementById('ModalTransacao').textContent = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
-                document.getElementById('ModalMercadoria').textContent = mercadoria || "Não informado";
-                document.getElementById('ModalQuantidade').textContent = quantidade || "0";
-                document.getElementById('ModalValor').textContent = valorTotal ? valorFormatado : "R$ 0,00";
-            });
-        });
-
-        
-    </script>
+    
 </body>
 </html>

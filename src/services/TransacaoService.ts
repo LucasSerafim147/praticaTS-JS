@@ -77,7 +77,7 @@ export class TransacaoService {
                 <td class="col-qtd">${transacao.quantidade}</td>
                 <td class="col-valor text-end">${valorFormatado}</td>
                 <td class="col-action text-end">
-                    <button class="btn btn-sm btn-outline-danger"  data-index="${index}" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                    <button class="btn btn-sm btn-outline-danger" data-index="${index}" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
@@ -103,7 +103,7 @@ export class TransacaoService {
         saldoElement.textContent = formatarMoeda(this.calcularSaldo());
 
        
-        document.querySelectorAll(".btn btn-danger px-4").forEach(button => {
+        document.querySelectorAll(".btn-outline-danger").forEach(button => {
             button.addEventListener("click", (event) => {
                 const target = event.currentTarget as HTMLElement;
                 const index = target.getAttribute("data-index");
