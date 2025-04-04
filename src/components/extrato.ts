@@ -1,7 +1,7 @@
-import { Transacao } from "../types/Transacao";
-import { TipoTransacao } from "../types/TipoTransacao";
-import { formatarMoeda } from "../utils/formatters";
-import { getItem, setItem } from "../utils/armazenador";
+import { Transacao } from "../types/Transacao.js";
+import { TipoTransacao } from "../types/TipoTransacao.js";
+import { formatarMoeda } from "../utils/formatters.js";
+import { getItem, setItem } from "../utils/armazenador.js";
 
 const tbodyExtrato = document.querySelector(".table-extrato tbody") as HTMLElement;
 const saldoValor = document.querySelector(".saldo-valor") as HTMLElement;
