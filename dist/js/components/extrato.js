@@ -1,6 +1,6 @@
-import { TipoTransacao } from "../types/TipoTransacao";
-import { formatarMoeda } from "../utils/formatters";
-import { getItem } from "../utils/armazenador";
+import { TipoTransacao } from "../types/TipoTransacao.js";
+import { formatarMoeda } from "../utils/formatters.js";
+import { getItem } from "../utils/armazenador.js";
 const tbodyExtrato = document.querySelector(".table-extrato tbody");
 const saldoValor = document.querySelector(".saldo-valor");
 function carregarTransacoes() {
