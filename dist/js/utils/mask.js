@@ -25,3 +25,4 @@ inputValor.addEventListener('focus', function (e) {
         this.value = '';
     }
 });
+console.log("I KILL MYSELF");

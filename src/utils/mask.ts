@@ -1,3 +1,4 @@
+
 const inputValor = document.querySelector('#valor') as HTMLInputElement;
 
 inputValor.addEventListener('input', function(e) {
@@ -29,3 +30,5 @@ inputValor.addEventListener('focus', function(e) {
     this.value = '';
   }
 });
+
+console.log("I KILL MYSELF")
